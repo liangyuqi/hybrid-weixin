@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>schema</title>
+</head>
+
+<body>
+    <button id="btn1">扫一扫</button>
+    <button id="btn2">分享</button>
+    <script src="./invoke.js"></script>
+    <script>
+    document.getElementById('btn1').addEventListener('click', function() {
+        window.invoke.scan({}, function() {})
+    })
+
+    document.getElementById('btn2').addEventListener('click', function() {
+        window.invoke.share({
+            title: 'xxx',
+            content: 'yyy'
+        }, function(result) {
+            if (result.errno === 0) {
+                alert('分享成功');
+            } else {
+                // 分享失败
+                alert(result.message);
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>
